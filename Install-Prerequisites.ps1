@@ -39,3 +39,4 @@ Install-ChocolateyPackage -PackageName python3
 Install-ChocolateyPackage -PackageName javaruntime
 Install-ChocolateyPackage -PackageName azurecli
 Install-ChocolateyPackage -PackageName az.powershell
+Install-ChocolateyPackage -PackageName curl
