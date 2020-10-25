@@ -1,9 +1,16 @@
 Import-Module -Force .\GitHub.Runner.PSFunctions.psm1
 
-[string] $authToken = Get-GitHubAuthToken -GitHubUserName X -PAT Y
+param (
+    [Parameter(Mandatory = $true)]
+    [string] $GitHubUserName,
+    [Parameter(Mandatory = $true)]
+    [string] $PAT
+)
+
+[string] $authToken = Get-GitHubAuthToken -GitHubUserName $GitHubUserName -PAT $PAT
 
 if (-not $authToken -or $authToken -eq "Og==") {
-    Write-Error -Message "'$authToken' is invalid"
+    Write-Error -Message "'$authToken' is invalid" -ErrorAction Stop
 }
 
 Get-RunnerFiles
