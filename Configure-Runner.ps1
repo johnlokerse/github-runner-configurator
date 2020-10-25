@@ -28,7 +28,7 @@ if (-not $authToken -or $authToken -eq "Og==") {
 Write-Host "Downloading GitHub Runner files..."
 Get-RunnerFiles
 if (Test-Path -Path $PWD\*.cmd) {
-    [string] $registrationToken = (Get-ProjectRegistrationToken -Owner Get-Owner -Repo Get-RepoName -Base64AuthToken $authToken).token
+    [string] $registrationToken = (Get-ProjectRegistrationToken -Owner $(Get-Owner) -Repo $(Get-RepoName) -Base64AuthToken $authToken).token
     Write-Host "Installing GitHub runner in $GitHubRepoUrl"
     Install-Runner -GitHubRepoUrl $GitHubRepoUrl -RegistrationToken $registrationToken
 }
