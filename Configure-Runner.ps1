@@ -1,4 +1,3 @@
-Import-Module -Force .\GitHub.Runner.PSFunctions.psm1
 
 param (
     [Parameter(Mandatory = $true)]
@@ -8,6 +7,8 @@ param (
     [Parameter(Mandatory = $true)]
     [Alias("repo")][string] $GitHubRepoUrl
 )
+    
+Import-Module -Force .\GitHub.Runner.PSFunctions.psm1
 
 function Get-RepoName {
     [array] $splittedUrl = ($GitHubRepoUrl -Split "/")
