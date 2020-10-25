@@ -42,10 +42,12 @@ function Get-RunnerFiles {
 }
 
 function Install-Runner {
-    [Parameter(Mandatory = $true)]
-    [string] $GitHubRepoUrl
-    [Parameter(Mandatory = $true)]
-    [string] $RegistrationToken
+    param (
+        [Parameter(Mandatory = $true)]
+        [string] $GitHubRepoUrl,
+        [Parameter(Mandatory = $true)]
+        [string] $RegistrationToken
+    )
     
-    .\config.cmd --url $GitHubRepoUrl --token $RegistrationToken
+    .\config.cmd --unattended --url $GitHubRepoUrl --token $RegistrationToken
 }
