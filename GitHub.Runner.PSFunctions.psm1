@@ -47,5 +47,5 @@ function Install-Runner {
     [Parameter(Mandatory = $true)]
     [string] $RegistrationToken
     
-    Invoke-Item -Path "$PWD\config.cmd --url $GitHubRepoUrl --token $RegistrationToken"
+    .\config.cmd --url $GitHubRepoUrl --token $RegistrationToken
 }
