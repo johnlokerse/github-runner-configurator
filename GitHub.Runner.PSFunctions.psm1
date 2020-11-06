@@ -35,8 +35,15 @@ function Get-ProjectRegistrationToken {
 }
 
 function Get-RunnerFiles {
-    New-Item -Path D: -ItemType Directory -Name actions-runner
-    Set-Location D:\actions-runner
+    param (
+        [Parameter(Mandatory = $true)]
+        [string] $DownloadLocation
+    )
+
+    New-Item -Path $DownloadLocation -ItemType Directory -Name actions-runner
+    Set-Location $DownloadLocation\actions-runner\
+    
+    Write-Host "Downloading GitHub Runner files..."
     Invoke-WebRequest -Uri https://github.com/actions/runner/releases/download/v2.273.4/actions-runner-win-x64-2.273.4.zip -OutFile actions-runner-win-x64-2.273.4.zip
     Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression.ZipFile]::ExtractToDirectory("$PWD/actions-runner-win-x64-2.273.4.zip", "$PWD")
 }
