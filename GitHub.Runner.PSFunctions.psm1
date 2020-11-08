@@ -41,7 +41,9 @@ function Get-RunnerFiles {
     )
 
     New-Item -Path $DownloadLocation -ItemType Directory -Name actions-runner
-    Set-Location $DownloadLocation\actions-runner\
+    if (Test-Path -Path $DownloadLocation) {
+        Set-Location $DownloadLocation\actions-runner\
+    }
     
     Write-Host "Downloading GitHub Runner files..."
     Invoke-WebRequest -Uri https://github.com/actions/runner/releases/download/v2.273.4/actions-runner-win-x64-2.273.4.zip -OutFile actions-runner-win-x64-2.273.4.zip
