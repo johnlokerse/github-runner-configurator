@@ -2,7 +2,7 @@ class GitHubBase {
     [string] $UserName
     [string] $PersonalAccessToken
     [string] $RepositoryUrl
-    [string] $BaseUrl = "https://api.github.com"
+    [string] $ApiBaseUrl = "https://api.github.com"
 
     [System.Convert] GetGitHubAuthToken ([string] $UserName, [string] $PersonalAccessToken) {
         $token = "$UserName" + ":" + "$PersonalAccessToken"
